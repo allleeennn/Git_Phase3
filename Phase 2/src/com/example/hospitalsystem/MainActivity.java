@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * The title screen, which contains a button to begin the program and search patient by health card number.
@@ -71,20 +72,23 @@ public class MainActivity extends Activity implements OnClickListener {
 		String username = usernameView.getText().toString();
 		EditText passwordView = (EditText)findViewById(R.id.MainPassword);
 		String password = passwordView.getText().toString();
+		TextView loginFeedback = (TextView)findViewById(R.id.LoginFeedback);
 		
 		User user = users.login(username, password);
 		if(user != null){
 			if(user.isPhysician()){
 				Intent intentPhy = new Intent (this, PhysicianMain.class);
 				startActivity(intentPhy);
+				loginFeedback.setText("");
 			}
 			else{
 					Intent intentNurse = new Intent (this, NurseMain.class);
 					startActivity(intentNurse);
+					loginFeedback.setText("");
 			}
 		}
 		else{
-			
+			loginFeedback.setText(R.string.MainLoginFeedBack);
 		}
 	}
 

@@ -12,6 +12,7 @@ import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 /**
  * A class of users, which tracks username and password as well as whether each user is a physician or nurse.
  */
@@ -22,15 +23,17 @@ public class Users implements Serializable {
 	/**
 	 * List of users. Resizable to allow addition/removal of valid users.
 	 */
-	private ArrayList<User> users;
+	protected ArrayList<User> users = new ArrayList<User>() ;
 	
 	public Users(File userData) {
 		try {
 			
-			Scanner s = new Scanner(userData);
+			Scanner s = new Scanner(new FileInputStream(userData));
 			while(s.hasNextLine()){
 				String[] userString = s.nextLine().split(",");
-				users.add(new User(userString[0], userString[1], userString[2]));
+				User temp = new User(userString[0], userString[1], userString[2]);
+				System.out.println(temp.toString());
+				this.users.add(temp);
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

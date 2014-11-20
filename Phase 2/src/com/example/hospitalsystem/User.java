@@ -11,16 +11,16 @@ import java.util.List;
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 5570418841928472787L;
-	String password;
-	String username;
-	boolean isPhysician;
+	protected String password;
+	protected String username;
+	protected boolean isPhysician;
 	
 	public User(String username, String password, String permission){
 		this.username = username;
 		this.password = password;
-		isPhysician = false;
+		this.isPhysician = false;
 		if (permission.equals("physician")){
-			isPhysician = true;
+			this.isPhysician = true;
 		}
 	}
 	
@@ -86,6 +86,10 @@ public class User implements Serializable {
 			return;
 		}
 	}
-	
+	/*
+	public String toString(){
+		return this.username + this.password + this.isPhysician;
+	}
+	*/
 	
 }

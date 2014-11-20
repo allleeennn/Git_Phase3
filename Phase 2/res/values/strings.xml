@@ -65,5 +65,5 @@
     <string name="title_activity_add_prescription">AddPrescription</string>
     <string name="Medication">Medication</string>
     <string name="Instructions">Instructions</string>
-
+	<string name="MainLoginFeedBack">"We couldn't log you in with what you just entered. Please try again."</string>
 </resources>

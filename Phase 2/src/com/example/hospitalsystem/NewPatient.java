@@ -1,9 +1,15 @@
 package com.example.hospitalsystem;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class NewPatient extends Activity {
 
@@ -31,4 +37,55 @@ public class NewPatient extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	public void createNewPatient(View view){
+		EditText name = (EditText)findViewById(R.id.newPatientName);
+		EditText dob = (EditText)findViewById(R.id.patientDOB);
+		EditText hcn = (EditText)findViewById(R.id.NewPatientHCN);
+		
+		TextView success = (TextView)findViewById(R.id.addedNewPatient);
+		
+		String namePatient = name.getText().toString();
+		String dobPatient = dob.getText().toString();
+		String hcnPatient = hcn.getText().toString();
+		
+		String [] parts = dobPatient.split("-");
+		String yearStr = parts[0];
+		String monthStr = parts[1];
+		String dayStr = parts[2];
+		
+		int year = Integer.parseInt(yearStr);
+		int month = Integer.parseInt(monthStr);
+		int day = Integer.parseInt(dayStr);
+		
+		Time dobTime = new Time(year, month, day);
+		
+		try{
+			Patient newPatient = new Patient(namePatient, hcnPatient, dobTime);
+			
+			success.setText(R.string.Success + namePatient);
+			
+			PatientSystem patientSystem = null;
+			File deserialize = new File(this.getApplicationContext().getFilesDir().getAbsolutePath());
+			try {
+				patientSystem = PatientSystem.deserialize(deserialize);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+			
+			patientSystem.addPatient(newPatient);
+			
+			File serialize = new File(this.getApplicationContext().getFilesDir().getAbsolutePath());
+			try {
+				patientSystem.addPatient(newPatient).serialize(serialize);
+				finish();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+		catch (Exception e){
+			success.setText(R.string.Fail);
+			}
+	}
 }
+

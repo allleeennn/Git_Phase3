@@ -69,15 +69,15 @@ public class PatientSystem implements Serializable {
 	 * Appends patient p to this patientSystem.
 	 * @param p The patient to be added.
 	 */
-	public void addPatient(Patient p) {
+	public Patient addPatient(Patient p) {
 		for(int i = 0; i < patients.size(); i++) {
 			if(p.getArrivalTime().compareTo(patients.get(i).getArrivalTime()) == -1) {
 				patients.add(i, p);
-				return;
+				return p;
 			}
 		}
 		patients.add(patients.size(), p);
-
+		return p;
 	}
 
 	/***

@@ -64,4 +64,11 @@
         android:layout_marginTop="22dp"
         android:text="@string/Confirm" />
 
+    <TextView
+        android:id="@+id/addedNewPatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/NewPatientHCN"
+        android:layout_below="@+id/NewPatientConfirm" />
+
 </RelativeLayout>

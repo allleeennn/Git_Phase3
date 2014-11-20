@@ -65,5 +65,7 @@
     <string name="title_activity_add_prescription">AddPrescription</string>
     <string name="Medication">Medication</string>
     <string name="Instructions">Instructions</string>
+    <string name="Success">Successfully added.</string>
+    <string name="Fail">Please enter valid information.</string>
 
 </resources>

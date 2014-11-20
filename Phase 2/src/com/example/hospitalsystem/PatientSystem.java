@@ -50,11 +50,13 @@ public class PatientSystem implements Serializable {
 		return sortedList;
 	}
 
+	
 	/***
 	 * Reads a file from a specified directory and saves it in a String.
 	 * @param dir A file.
 	 * @throws FileNotFoundException
 	 */
+	/*
 	public String readFile(File dir) throws FileNotFoundException {
 		Scanner scanner = new Scanner(new FileInputStream(dir));
 		String text_file = "";
@@ -64,6 +66,7 @@ public class PatientSystem implements Serializable {
 		scanner.close();
 		return text_file;
 	}
+	*/
 
 	/**
 	 * Appends patient p to this patientSystem.

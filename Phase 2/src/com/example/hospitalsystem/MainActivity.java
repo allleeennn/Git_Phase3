@@ -2,10 +2,7 @@ package com.example.hospitalsystem;
 
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.util.Scanner;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,7 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.EditText;
 
 /**
  * The title screen, which contains a button to begin the program and search patient by health card number.
@@ -21,16 +18,20 @@ import android.widget.Button;
  */
 public class MainActivity extends Activity implements OnClickListener {
 
-	private Button searchButton;
 	private PatientSystem patientSystem;
+	private Users users;
 	private File f; 
 	private File serialize;
+	private File userData;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
 		f = new File(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/patient_records.txt");
+		userData = new File(this.getApplicationContext().getFilesDir().getAbsolutePath() + "/passwords.txt");
+		
 		//Instantiate Patient System
 		patientSystem = new PatientSystem();
 		try {  
@@ -46,7 +47,11 @@ public class MainActivity extends Activity implements OnClickListener {
 			e1.printStackTrace();
 		}
 		
+		users = new Users(userData);
+		
 	}
+	
+
 
 
 	@Override
@@ -56,21 +61,31 @@ public class MainActivity extends Activity implements OnClickListener {
 		return true;
 	}
 
-
+	/**
+	 * Executed when clicking the log in button
+	 */
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
-
-
+		//get the username and password
+		EditText usernameView = (EditText)findViewById(R.id.MainUserName);
+		String username = usernameView.getText().toString();
+		EditText passwordView = (EditText)findViewById(R.id.MainPassword);
+		String password = passwordView.getText().toString();
+		
+		User user = users.login(username, password);
+		if(user != null){
+			if(user.isPhysician()){
+				Intent intentPhy = new Intent (this, PhysicianMain.class);
+				startActivity(intentPhy);
+			}
+			else{
+					Intent intentNurse = new Intent (this, NurseMain.class);
+					startActivity(intentNurse);
+			}
+		}
+		else{
+			
+		}
 	}
 
-	
-	/**
-	 * Executed when search button is pressed. Starts up the LookUpPatient activity.
-	 */
-	public void clickSearch() {
-		Intent searchIntent = new Intent(this, LookUpPatient.class);
-		startActivity(searchIntent);
-	}
-	
 }

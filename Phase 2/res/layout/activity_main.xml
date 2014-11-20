@@ -60,6 +60,16 @@
         android:layout_below="@+id/MainPassword"
         android:layout_marginTop="33dp"
         android:layout_toRightOf="@+id/MaintextView1"
-        android:text="@string/LogIn" />
+        android:text="@string/LogIn"
+        android:onClick="onClick" />
+
+    <TextView
+        android:id="@+id/maintest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/MainUserName"
+        android:layout_below="@+id/MainPassword"
+        android:layout_marginTop="15dp"
+         />
 
 </RelativeLayout>

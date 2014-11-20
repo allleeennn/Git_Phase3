@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.hospitalsystem"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="18" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LookUpPatient"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_look_up_patient"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.hospitalsystem.MainActivity" />
+        </activity>
+        <activity
+            android:name=".CreateNewRecord"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_create_new_record"
+            android:parentActivityName=".ConfirmPatient"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.hospitalsystem.ConfirmPatient" />
+        </activity>
+        <activity
+            android:name=".ConfirmPatient"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_confirm_patient"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.hospitalsystem.MainActivity" />
+        </activity>
+        <activity
+            android:name=".PreviousRecord"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_previous_record"
+            android:parentActivityName=".LookUpPatient"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.hospitalsystem.IndividualData" />
+        </activity>
+        <activity
+            android:name=".IndividualData"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_individual_data"
+            android:parentActivityName=".LookUpPatient"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.hospitalsystem.LookUpPatient" />
+        </activity>
+        <activity
+            android:name=".VisitRecord"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_visit_record"
+            android:parentActivityName=".LookUpPatient"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.hospitalsystem.PreviousRecord" />
+        </activity>
+        <activity
+            android:name=".VitalSignsUpdate"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_vital_signs_update"
+            android:parentActivityName=".LookUpPatient"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.hospitalsystem.IndividualData" />
+        </activity>
+        <activity
+            android:name=".NurseMain"
+            android:label="@string/title_activity_nurse_main"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+        </activity>
+        <activity
+            android:name=".NewPatient"
+            android:label="@string/title_activity_new_patient"
+            android:parentActivityName=".NurseMain" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="NurseMain" />
+        </activity>
+        <activity
+            android:name=".PhysicianMain"
+            android:label="@string/title_activity_physician_main"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+        </activity>
+        <activity
+            android:name=".AddPrescription"
+            android:label="@string/title_activity_add_prescription"
+            android:parentActivityName=".PhysicianMain" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="PhysicianMain" />
+        </activity>
+    </application>
+
+</manifest>
